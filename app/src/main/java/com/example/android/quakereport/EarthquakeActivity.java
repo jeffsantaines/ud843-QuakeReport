@@ -20,6 +20,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 public class EarthquakeActivity extends AppCompatActivity {
@@ -32,8 +33,8 @@ public class EarthquakeActivity extends AppCompatActivity {
         setContentView(R.layout.earthquake_activity);
 
         // Create a fake list of earthquake locations.
-        ArrayList<String> earthquakes = new ArrayList<>();
-        earthquakes.add("San Francisco");
+        ArrayList<Earthquake> earthquakes = new ArrayList<>();
+        earthquakes.add(7.2,"San Francisco", new SimpleDateFormat("02/02/2016"));
         earthquakes.add("London");
         earthquakes.add("Tokyo");
         earthquakes.add("Mexico City");
