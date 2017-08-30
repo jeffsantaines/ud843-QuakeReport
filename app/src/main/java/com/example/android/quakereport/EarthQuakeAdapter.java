@@ -18,7 +18,7 @@ import java.util.ArrayList;
 
 public class EarthQuakeAdapter extends ArrayAdapter {
 
-    public EarthQuakeAdapter(@NonNull Context context, @LayoutRes int resource, @NonNull ArrayList<Earthquake> earthquakes) {
+    public EarthQuakeAdapter(@NonNull Context context, @LayoutRes ArrayList<Earthquake> resource, @NonNull int earthquakes) {
         super(context, resource, earthquakes);
 
     }
@@ -28,13 +28,12 @@ public class EarthQuakeAdapter extends ArrayAdapter {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 
         View listItemView = convertView;
-
         if (listItemView == null) {
             listItemView = LayoutInflater.from(getContext()).inflate(R.layout.list_item, parent, false);
         }
 
         TextView magnitude_textView = (TextView) listItemView.findViewById(R.id.magnitude_textView);
-        magnitude_textView.setText(earthquake);
+        magnitude_textView.setText();
 
 
         return listItemView;
