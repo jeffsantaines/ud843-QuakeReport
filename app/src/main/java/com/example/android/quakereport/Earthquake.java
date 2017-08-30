@@ -9,28 +9,22 @@ import java.util.Date;
 
 public class Earthquake {
 
-    private double magnitude;
+    private String magnitude;
     private String location;
-    private SimpleDateFormat date;
+    private String date;
 
-    public Earthquake(){
-        this.magnitude = Double.parseDouble(null);
-        this.location = null;
-        this.date = null;
-    }
-
-
-    public Earthquake(double magnitude, String location, Date date) {
+    public Earthquake(String magnitude, String location, String date) {
         this.magnitude = magnitude;
         this.location = location;
-        this.date = new SimpleDateFormat();
+        this.date = date;
     }
 
-    public double getMagnitude() {
+
+    public String getMagnitude() {
         return magnitude;
     }
 
-    public void setMagnitude(double magnitude) {
+    public void setMagnitude(String magnitude) {
         this.magnitude = magnitude;
     }
 
@@ -38,23 +32,15 @@ public class Earthquake {
         return location;
     }
 
-    public SimpleDateFormat getDate() {
-        return date;
-    }
-
-    public void setDate(SimpleDateFormat date) {
-        this.date = date;
-    }
-
-
-
     public void setLocation(String location) {
         this.location = location;
     }
 
+    public String getDate() {
+        return date;
+    }
 
-    @Override
-    public String toString() {
-        return super.toString();
+    public void setDate(String date) {
+        this.date = date;
     }
 }
