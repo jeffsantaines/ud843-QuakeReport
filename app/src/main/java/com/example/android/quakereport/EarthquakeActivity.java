@@ -42,7 +42,7 @@ public class EarthquakeActivity extends AppCompatActivity {
 
 
         //instantiate Earthquake Adapter type to modify th getView method
-        EarthQuakeAdapter itemsAdapter = new EarthQuakeAdapter(this, earthquakes, R.color.colorPrimary);
+        EarthQuakeAdapter itemsAdapter = new EarthQuakeAdapter(this, earthquakes );
 
         // Find a reference to the {@link ListView} in the layout
         ListView earthquakeListView = (ListView) findViewById(R.id.list);
