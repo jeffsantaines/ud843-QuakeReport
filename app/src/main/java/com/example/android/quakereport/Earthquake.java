@@ -1,32 +1,43 @@
 package com.example.android.quakereport;
 
+
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 
 /**
  * Created by Jeff on 27-Aug-17.
  */
 
+
+
 public class Earthquake {
 
-    private String magnitude;
+    /**
+     * Constructs a new {@link Earthquake} object.
+     *
+     * @param magnitude is the magnitude (size) of the earthquake
+     * @param location is the location where the earthquake happened
+     * @param date is the time in unix
+     */
+
+    private double magnitude;
     private String location;
     private String date;
-    private String time;
+    private String url;
 
-    public Earthquake(String magnitude, String location, String date, String time) {
+    public Earthquake(double magnitude, String location, String date, String url) {
         this.magnitude = magnitude;
         this.location = location;
         this.date = date;
+        this.url = url;
     }
 
 
-    public String getMagnitude() {
+    public double getMagnitude() {
         return magnitude;
     }
 
-    public void setMagnitude(String magnitude) {
+    public void setMagnitude(double magnitude) {
         this.magnitude = magnitude;
     }
 
@@ -67,7 +78,11 @@ public class Earthquake {
         return timeToDisplay;
     }
 
-    public void setTime(String time) {
-        this.time = time;
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 }
