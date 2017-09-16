@@ -18,6 +18,7 @@ public class Earthquake {
      * @param magnitude is the magnitude (size) of the earthquake
      * @param location is the location where the earthquake happened
      * @param date is the time in unix
+     * @param url is the USGS URL of the earthquake which shows it on a map
      */
 
     private double magnitude;

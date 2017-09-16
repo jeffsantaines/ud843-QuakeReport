@@ -1,12 +1,9 @@
 package com.example.android.quakereport;
 
 import android.util.Log;
-import android.widget.Toast;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.TooManyListenersException;
 
@@ -79,7 +76,7 @@ public final class QueryUtils {
             Log.e("QueryUtils", "Problem parsing the earthquake JSON results", e);
         }
 
-        // Return the list of earthquakes
+        // Return an ArrayList of earthquake or another way of saying it is return a list of earthquakes
         return earthquakes;
     }
 
