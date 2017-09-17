@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Jeff on 30-Aug-17.
@@ -23,7 +24,7 @@ import java.util.ArrayList;
 
 public class EarthQuakeAdapter extends ArrayAdapter {
 
-    public EarthQuakeAdapter(@NonNull Context context, @NonNull ArrayList<Earthquake> earthquakes) {
+    public EarthQuakeAdapter(@NonNull Context context, @NonNull List<Earthquake> earthquakes) {
         super(context, 0, earthquakes);
 
     }
@@ -40,11 +41,11 @@ public class EarthQuakeAdapter extends ArrayAdapter {
 
         Earthquake currentEarthquake = (Earthquake) getItem(position);
         DecimalFormat formatter = new DecimalFormat("0.0");
-        String output = formatter.format((currentEarthquake.getMagnitude()));
+        String output_Magnitude = formatter.format((currentEarthquake.getMagnitude()));
 
 
         TextView magnitude_textView = (TextView) listItemView.findViewById(R.id.magnitude_textView);
-        magnitude_textView.setText(output);
+        magnitude_textView.setText(output_Magnitude);
 
 
         // Set the proper background color on the magnitude circle.
