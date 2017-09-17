@@ -41,7 +41,7 @@ public final class QueryUtils {
     }
 
     /**
-     * Return a list of {@link Earthquake} objects that has been built up from
+     * Return a list of {@link ArrayList<Earthquake>} objects that has been built up from
      * parsing a JSON response.
      */
     public static ArrayList<Earthquake> extractEarthquakes() {
@@ -49,7 +49,7 @@ public final class QueryUtils {
         // Create an empty ArrayList that we can start adding earthquakes to
         ArrayList<Earthquake> earthquakes = new ArrayList<>();
 
-        //Create URL
+        //Create URL by using our helper method createUrl which accepts a string URL
         URL url = createUrl(USGS_URL);
 
         // Perform HTTP request to the URL and receive a JSON response back

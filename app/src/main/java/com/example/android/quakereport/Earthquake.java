@@ -58,7 +58,7 @@ public class Earthquake {
         Date dateObject = new Date(long_date);
 
         //Then we can initialize a SimpleDateFormat instance and configure it to provide a more //readable representation according to the given format.
-        SimpleDateFormat dateFormatter = new SimpleDateFormat("MMM DD, yyyy");
+        SimpleDateFormat dateFormatter = new SimpleDateFormat("MMM d, yyyy");
         String dateToDisplay = dateFormatter.format(dateObject);
         return dateToDisplay;
 
