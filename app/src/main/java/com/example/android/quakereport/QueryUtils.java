@@ -16,10 +16,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.TooManyListenersException;
 
-import static com.example.android.quakereport.EarthquakeActivity.LOG_TAG;
 import static com.example.android.quakereport.EarthquakeActivity.USGS_URL;
 
 /**
@@ -44,18 +41,16 @@ public final class QueryUtils {
      * Return a list of {@link ArrayList<Earthquake>} objects that has been built up from
      * parsing a JSON response.
      */
-    public static ArrayList<Earthquake> extractEarthquakes() {
+    public static ArrayList<Earthquake> extractEarthquakes(String url) {
 
         // Create an empty ArrayList that we can start adding earthquakes to
         ArrayList<Earthquake> earthquakes = new ArrayList<>();
 
-        //Create URL by using our helper method createUrl which accepts a string URL
-        URL url = createUrl(USGS_URL);
-
+        URL mUrl = createUrl(url);
         // Perform HTTP request to the URL and receive a JSON response back
         String jsonResponse = null;
         try{
-            jsonResponse = makeHttpRequest(url);
+            jsonResponse = makeHttpRequest(mUrl);
         } catch (IOException e){
             Log.e(LOG_TAG, "Error closing input stream");
         }
