@@ -22,6 +22,7 @@ import android.os.Bundle;
 import android.app.LoaderManager.LoaderCallbacks;
 import android.content.Loader;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -47,6 +48,7 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderCallb
 
     private void updateUI(final List<Earthquake> earthquakes) {
         // Find a reference to the {@link ListView} in the layout
+
         ListView earthquakeListView = (ListView) findViewById(R.id.list);
 
         // Create a new {@link ArrayAdapter} of earthquakes
@@ -66,6 +68,7 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderCallb
                 startActivity(i);
             }
         });
+
     }
 
 
@@ -73,17 +76,19 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderCallb
     public Loader<List<Earthquake>> onCreateLoader(int id, Bundle args) {
         //Create a new Loader for the given URL
         EarthquakeTaskLoader mEarthquakeTaskLoader = (new EarthquakeTaskLoader(this, USGS_URL));
+
         return mEarthquakeTaskLoader;
     }
 
     @Override
     public void onLoadFinished(Loader<List<Earthquake>> loader, List<Earthquake> earthquakes) {
+        //updateUI(null);
         updateUI(earthquakes);
     }
 
     @Override
     public void onLoaderReset(Loader<List<Earthquake>> loader) {
-            updateUI(null);
+        loader.abandon();
     }
 
 
