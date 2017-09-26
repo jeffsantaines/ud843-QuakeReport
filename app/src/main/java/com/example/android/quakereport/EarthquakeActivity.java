@@ -26,6 +26,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
+
 import java.util.List;
 
 public class EarthquakeActivity extends AppCompatActivity implements LoaderCallbacks<List<Earthquake>> {
@@ -33,12 +35,13 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderCallb
     public static final String LOG_TAG = EarthquakeActivity.class.getName();
     public static final int EARTHQUAKE_LOADER_ID = 1;
     public static final String USGS_URL = "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&eventtype=earthquake&orderby=time&minmag=6&limit=10";
+    private TextView mEmptyStateTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.earthquake_list);
-
+        mEmptyStateTextView = (TextView) findViewById(R.id.emptyStateTextView);
         LoaderManager mLoaderManager =  getLoaderManager();
 
         // Prepare the loader.  Either re-connect with an existing one,
@@ -50,6 +53,9 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderCallb
         // Find a reference to the {@link ListView} in the layout
 
         ListView earthquakeListView = (ListView) findViewById(R.id.list);
+
+
+        earthquakeListView.setEmptyView(mEmptyStateTextView);
 
         // Create a new {@link ArrayAdapter} of earthquakes
         EarthQuakeAdapter adapter = new EarthQuakeAdapter(this, earthquakes);
@@ -82,7 +88,7 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderCallb
 
     @Override
     public void onLoadFinished(Loader<List<Earthquake>> loader, List<Earthquake> earthquakes) {
-        //updateUI(null);
+        mEmptyStateTextView.setText(R.string.no_earthquakes);
         updateUI(earthquakes);
     }
 

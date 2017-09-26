@@ -55,15 +55,13 @@ public final class QueryUtils {
             Log.e(LOG_TAG, "Error closing input stream");
         }
 
-
-
         // Try to parse the SAMPLE_JSON_RESPONSE. If there's a problem with the way the JSON
         // is formatted, a JSONException exception object will be thrown.
         // Catch the exception so the app doesn't crash, and print the error message to the logs.
 
         try {
 
-            // TODO: Parse the response given by the SAMPLE_JSON_RESPONSE string and
+            //Parse the response given by the SAMPLE_JSON_RESPONSE string and
             // build up a list of Earthquake objects with the corresponding data.
             JSONObject root = new JSONObject(jsonResponse);
             JSONArray featuresArray = root.getJSONArray("features");
@@ -166,7 +164,5 @@ public final class QueryUtils {
         }
         return output.toString();
     }
-
-
 
 }
