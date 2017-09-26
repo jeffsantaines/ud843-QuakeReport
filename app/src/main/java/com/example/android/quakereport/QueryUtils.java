@@ -17,7 +17,6 @@ import java.net.URL;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 
-import static com.example.android.quakereport.EarthquakeActivity.USGS_URL;
 
 /**
  * Helper methods related to requesting and receiving earthquake data from USGS.

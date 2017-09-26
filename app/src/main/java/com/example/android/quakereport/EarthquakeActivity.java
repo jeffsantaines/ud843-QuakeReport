@@ -26,6 +26,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.util.List;
@@ -36,17 +37,19 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderCallb
     public static final int EARTHQUAKE_LOADER_ID = 1;
     public static final String USGS_URL = "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&eventtype=earthquake&orderby=time&minmag=6&limit=10";
     private TextView mEmptyStateTextView;
+    private ProgressBar mIndeterminateBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.earthquake_list);
         mEmptyStateTextView = (TextView) findViewById(R.id.emptyStateTextView);
-        LoaderManager mLoaderManager =  getLoaderManager();
+        mIndeterminateBar = (ProgressBar) findViewById(R.id.indeterminateBar);
+        LoaderManager mLoaderManager = getLoaderManager();
 
         // Prepare the loader.  Either re-connect with an existing one,
         // or start a new one.
-        mLoaderManager.initLoader(EARTHQUAKE_LOADER_ID,null,this).forceLoad();
+        mLoaderManager.initLoader(EARTHQUAKE_LOADER_ID, null, this).forceLoad();
     }
 
     private void updateUI(final List<Earthquake> earthquakes) {
@@ -88,6 +91,7 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderCallb
 
     @Override
     public void onLoadFinished(Loader<List<Earthquake>> loader, List<Earthquake> earthquakes) {
+        mIndeterminateBar.setVisibility(View.GONE);
         mEmptyStateTextView.setText(R.string.no_earthquakes);
         updateUI(earthquakes);
     }
