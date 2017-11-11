@@ -25,12 +25,13 @@ import android.os.Bundle;
 import android.app.LoaderManager.LoaderCallbacks;
 import android.content.Loader;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,7 +39,7 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderCallb
 
     public static final String LOG_TAG = EarthquakeActivity.class.getName();
     public static final int EARTHQUAKE_LOADER_ID = 1;
-    public static final String USGS_URL = "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&eventtype=earthquake&orderby=time&minmag=6&limit=10";
+    public static final String USGS_URL = "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&eventtype=earthquake&orderby=time&minmag=6&limit=15";
     private TextView mEmptyStateTextView;
     private ProgressBar mIndeterminateBar;
     EarthQuakeAdapter adapter;
@@ -82,6 +83,8 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderCallb
             // Update empty state with no connection error message
             mEmptyStateTextView.setText(R.string.no_internet);
         }
+
+
     }
 
     private void updateUI(final List<Earthquake> earthquakes) {
@@ -111,6 +114,22 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderCallb
 
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_settings) {
+            Intent settingsIntent = new Intent(this, SettingsActivity.class);
+            startActivity(settingsIntent);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     @Override
     public Loader<List<Earthquake>> onCreateLoader(int id, Bundle args) {
